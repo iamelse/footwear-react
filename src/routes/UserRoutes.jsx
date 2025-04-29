@@ -1,18 +1,17 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { ROUTES } from '../config/routesConfig';
+import { Route, Outlet } from 'react-router-dom';
+import MainLayout from '@/layouts/MainLayout';
 
-import Home from '@/pages/user/Home.jsx';
-import NotFound from "@/pages/NotFound.jsx";
+// Pages
+import Home from '@/pages/user/Home';
+import NotFound from '@/pages/NotFound';
 
 const UserRoutes = () => {
     return (
-        <Routes>
-            <Route path={ROUTES.HOME.path} element={<Home />} />
-
-            {/* Catch-all 404 route at the top level */}
+        <Route element={<MainLayout />}>
+            <Route index element={<Home />} />
             <Route path="*" element={<NotFound />} />
-        </Routes>
+        </Route>
     );
 };
 
